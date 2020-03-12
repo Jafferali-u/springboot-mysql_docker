@@ -76,7 +76,7 @@
                                 <contextUrl>http://34.199.155.199:8082/artifactory</contextUrl>
                                 <username>${username}</username>
                                 <password>${password}</password>
-                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <excludePatterns>*.jar</excludePatterns>
                                 <repoKey>libs-snapshot-local</repoKey>
                                 <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
                             </publisher>
