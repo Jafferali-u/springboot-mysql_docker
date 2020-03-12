@@ -54,32 +54,49 @@
             <configuration>
                <finalName>docker-springboot</finalName>
             </configuration>
-                           <groupId>org.jfrog.buildinfo</groupId>
-               <artifactId>artifactory-maven-plugin</artifactId>
-               <version>2.6.1</version>
-               <inherited>false</inherited>
-               <executions>
-                  <execution>
-                     <id>build-info</id>
-                     <goals>
-                        <goal>publish</goal>
-                     </goals>
-                     <configuration>
-                        <deployProperties>
-                           <gradle>awesome</gradle>
-                           <review.team>qa</review.team>
-                        </deployProperties>
-                        <publisher>
-                           <contextUrl>http://34.199.155.199:8082/artifactory</contextUrl>
-                           <username>admin</username>
-                           <password>temp9999</password>
-                           <repoKey>libs-release-local</repoKey>
-                           <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
-                        </publisher>
-                     </configuration>
-                  </execution>
-               </executions>
-                     </plugin>
+              <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>2.7.0</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <deployProperties>
+                                <gradle>awesome</gradle>
+                            </deployProperties>
+                            <artifactory>
+                                <includeEnvVars>true</includeEnvVars>
+                                <envVarsExcludePatterns>*password*,*secret*,*key*,*token*,*passphrase*</envVarsExcludePatterns>
+                                <timeoutSec>60</timeoutSec>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>http://34.199.155.199:8082/artifactory</contextUrl>
+                                <username>${username}</username>
+                                <password>${password}</password>
+                                <excludePatterns>*-tests.jar</excludePatterns>
+                                <repoKey>libs-snapshot-local</repoKey>
+                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                            </publisher>
+                            <buildInfo>
+                                <buildName>plugin-demo</buildName>
+                                <buildNumber>${buildnumber}</buildNumber>
+                                <buildUrl>http://build-url.org</buildUrl>
+                            </buildInfo>
+                            <licenses>
+                                <autoDiscover>true</autoDiscover>
+                                <includePublishedArtifacts>false</includePublishedArtifacts>
+                                <runChecks>true</runChecks>
+                                <scopes>compile,runtime</scopes>
+                                <violationRecipients>build@organisation.com</violationRecipients>
+                            </licenses>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
       </plugins>
    </build>
 </project>
