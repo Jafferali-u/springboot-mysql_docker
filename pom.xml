@@ -48,10 +48,21 @@
 		    <artifactId>tomcat-jasper</artifactId>
 		    <version>9.0.24</version>
 		</dependency>
+	
 	</dependencies>
 
-	
-	<plugins>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>docker-springboot</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+		 <plugins>
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
                 <artifactId>artifactory-maven-plugin</artifactId>
@@ -76,7 +87,7 @@
                                 <contextUrl>http://34.199.155.199:8082/artifactory</contextUrl>
                                 <username>${username}</username>
                                 <password>${password}</password>
-                                <excludePatterns>*.jar</excludePatterns>
+                                <excludePatterns>*-tests.jar</excludePatterns>
                                 <repoKey>libs-snapshot-local</repoKey>
                                 <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
                             </publisher>
@@ -96,18 +107,26 @@
                     </execution>
                 </executions>
             </plugin>
-        
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<finalName>docker-springboot</finalName>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
 		
+	</build>
 </project>
