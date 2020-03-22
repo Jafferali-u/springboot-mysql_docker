@@ -5,9 +5,7 @@ pipeline{
         PATH = "/opt/maven3/bin:$PATH"
     }
   stages{
-    
-    stages{
-      stage("code check"){
+    stage("code check"){
             steps{
                 withSonarQubeEnv('sonar') {
                     sh "mvn -Dmaven.test.skip=true sonar:sonar"
@@ -20,5 +18,4 @@ pipeline{
             }
         }
   }
-}
 }
