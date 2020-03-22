@@ -38,8 +38,9 @@ pipeline{
         steps{
             sshagent(['srcjenkins']) {
                 sh """
-                scp -o StrictHostKeyChecking=no target/DockerSpringBoot-0.0.1-SNAPSHOT.war srcjenkins@172.31.57.87:/opt/springboot-mysql_docker/
-                ssh -o StrictHostKeyChecking=no srcjenkins@172.31.57.87 docker build . -t springboot-mysql_docker -f /opt/springboot-mysql_docker/Dockerfile
+                
+                scp -o StrictHostKeyChecking=no target/docker-springboot.war srcjenkins@172.31.57.87:/opt/springboot-mysql_docker/
+                
                 """
                 }
             }
