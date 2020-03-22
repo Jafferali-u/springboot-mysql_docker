@@ -7,7 +7,7 @@ pipeline{
   stages{
           stage("mevan build"){
             steps {
-                sh "mvn clean package"
+                sh "mvn package -Dmaven.test.skip=true"
             }
         }
   }
