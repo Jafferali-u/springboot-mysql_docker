@@ -7,7 +7,7 @@
 <title>Patient Information System</title>
 </head>
 <body>
-<a href="/CreatePatient.jsp">Create a Patient</a>
+<a href="/CreatePatient.jsp">Please create a Patient</a>
 </br><br></br><br></br><br></br>
 <a href="/FindPatientByID.jsp">Find a Patient by ID</a>
 </br><br></br><br></br><br></br>
