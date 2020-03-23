@@ -7,7 +7,7 @@
 <title>Patient Information System</title>
 </head>
 <body>
-    <h1>This is Kubernetes Test </h1>
+    <h1>This is Kubernetes Test1 </h1>
 <a href="/CreatePatient.jsp">Please create a Patient</a>
 </br><br></br><br></br><br></br>
 <a href="/FindPatientByID.jsp">Find a Patient by ID</a>
